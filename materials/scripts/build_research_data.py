@@ -57,6 +57,31 @@ SOURCES = [
     ("S41", "Chozan", "PDD Holdings: how Pinduoduo and Temu built a social commerce model", "https://chozan.co/pdd-holdings/", "2025", "secondary"),
     ("S42", "Entrepreneur India", "Inside Meesho: insights from India's most misunderstood unicorn (reseller model, women)", "https://india.entrepreneur.com/news-and-trends/inside-meesho-insights-from-indias-most-misunderstood/502064", "2023", "secondary"),
     ("S43", "VK Case Champ", "Синтетический датасет кейса (sources/dataset.xlsx), сентябрь 2026", "sources/dataset.xlsx", "2026-11", "official"),
+    # закрытые попытки витрин и оплаты в соцсетях
+    ("S44", "PPC Land", "Meta phases out Facebook and Instagram Shops checkout by August 2025", "https://ppc.land/meta-phases-out-facebook-and-instagram-shops-checkout-by-august-2025/", "2025-06-29", "secondary"),
+    ("S45", "Value Added Resource", "Meta phases out native checkout experience for Facebook & Instagram Shops", "https://www.valueaddedresource.net/meta-phases-out-native-checkout-facebook-instagram-shops/", "2025-06", "secondary"),
+    ("S46", "Business of Fashion", "Facebook to shut down live shopping, focus on Reels", "https://www.businessoffashion.com/news/technology/facebook-to-shut-down-live-shopping-focus-on-reels/", "2022-08", "secondary"),
+    ("S47", "Engadget", "Pinterest rolls out Product Pins (Buyable Pins sunset)", "https://www.engadget.com/2018-10-16-pinterest-product-pins.html", "2018-10-16", "secondary"),
+    ("S48", "PYMNTS", "Pinterest invests in shopping tech; drops plans for direct checkout", "https://pymnts.com/news/retail/2023/pinterest-invests-in-shopping-tech-to-retain-platforms-merchants", "2023", "secondary"),
+    ("S49", "BuzzFeed News", "Twitter disbands commerce team, ceases product development on Buy button", "https://www.buzzfeednews.com/article/alexkantrowitz/twitter-disbands-commerce-team-ceases-product-development-on", "2016-05", "secondary"),
+    ("S50", "Retail TouchPoints", "As TikTok Shop expands, Amazon shuts down Inspire social shopping feed", "https://www.retailtouchpoints.com/news/as-tiktok-shop-expands-to-new-markets-amazon-shuts-down-inspire-social-shopping-feed/150182/", "2025-02", "secondary"),
+    # оплата внутри платформ: юридические схемы
+    ("S51", "Racklify (гайд для продавцов)", "TikTok Shop: business vs personal verification (US)", "https://racklify.com/encyclopedia/business-vs-personal-verification-for-tiktok-shop-us/", "2025", "secondary"),
+    ("S52", "ShopSettings Help Center", "Processing orders made directly on Facebook and Instagram by Meta (US stores)", "https://help.shopsettings.com/hc/en-us/articles/16911744353687-Processing-orders-made-directly-on-Facebook-and-Instagram-by-Meta-for-the-US-stores", "2023", "secondary"),
+    ("S53", "WeChat (документация)", "Mini Store: shop type differences", "https://developers.weixin.qq.com/minigame/en/product/mini-store/shoptypedifferences.html", "2024", "official"),
+    ("S54", "РНКО «Платежный конструктор»", "Оферта для пользователей сайта Авито (электронное средство платежа)", "https://paymentkit.ru/doc/docs_uslugi_oferta_avito.pdf", "2024", "official"),
+    ("S55", "Журнал Lex Russica / МГЮА", "Правовая природа договоров при продаже через «Авито-доставку»", "https://ruslawonline.msal.ru/jour/article/download/177/171", "2023", "research"),
+    ("S56", "Цифровая экономика / Авито", "Исследование Авито: верификация продавцов через Госуслуги, ИНН, банковский ID", "https://d-economy.ru/news/issledovanie-avito-pochti-70-pokupatelej-doverjajut-verifikacii-cherez-gosuslugi-a-38-prodavcov-prohodjat-proverku-s-pomoshhju-pasporta", "2025", "secondary"),
+    ("S57", "МойСклад", "Самозанятые на маркетплейсах", "https://www.moysklad.ru/poleznoe/marketplejsy/samozanyatye-na-marketpleysah/amp/", "2025", "secondary"),
+    ("S58", "Контур", "Формирование чека агента за самозанятого", "https://kontur.ru/qa/19839", "2024", "secondary"),
+    ("S59", "ppt.ru / ФНС", "Самозанятым на платформах «Яндекса» не нужно формировать чеки до 1 ноября", "https://ppt.ru/news/samozanyatie/samozanyatym-na-platformakh-yandeksa-ne-nuzhno-formirovat-cheki-do-1-noyabrya", "2026-10", "secondary"),
+    ("S60", "ЮKassa (документация)", "API выплат: выплаты самозанятым с автоматической регистрацией чека в «Мой налог»", "https://yookassa.ru/docs/payouts/supplementary/changelog", "2025", "official"),
+    ("S61", "Habr", "Приём платежей в Telegram-боте через ЮKassa (самозанятый)", "https://habr.com/ru/articles/821415/", "2024", "secondary"),
+    ("S62", "Telegram (документация)", "Bot Payments API for Digital Goods and Services (Stars)", "https://core.telegram.org/bots/payments-stars", "2024", "official"),
+    ("S63", "VK (справка)", "VK Pay для ЮЛ и ИП", "https://vk.ru/@vk_id-vk-pay-for-business", "2024", "official"),
+    ("S64", "eLama", "Продажи в соцсетях: продвижение товаров во ВКонтакте (способы оплаты, в т.ч. при получении)", "https://elama.ru/blog/prodazhi-v-socsetyah-chto-nuzhno-znat-o-prodvizhenii-tovarov-vo-vkontakte-chtoby-bolshe-zarabatyvat/", "2025", "secondary"),
+    ("S65", "VK (справка)", "Гид по Магазину 2.0 (доставка СДЭК и Boxberry, онлайн-оплата)", "https://vk.ru/@business-magazin-2-0", "2025", "official"),
+    ("S66", "ppc.world", "Теперь купить товары с Ozon можно прямо внутри ВКонтакте (мини-приложение, Ozon ID)", "https://ppc.world/news/teper-kupit-tovary-s-ozon-mozhno-pryamo-vnutri-vkontakte/", "2024-10-09", "secondary"),
 ]
 
 # ---------------------------------------------------------------- кейсы (одна строка = одна платформа)
@@ -111,13 +136,13 @@ CASES = [
          outcome="Успех", lesson_for_vk="Контент-коммерция выросла на 98% за год до $49,7 млрд — классические маркетплейсы были вынуждены встроить видео и эфиры",
          sources="S07;S08;S09"),
     dict(platform="Instagram / Facebook Shops", market="США и мир", archetype="Отдельная витрина магазина в соцсети",
-         where_buy="Сначала внешний сайт, с 2023 — обязательный чекаут в США", year=2023,
+         where_buy="С 2023 — обязательный чекаут в США; с июня–августа 2025 — снова сайт продавца", year=2025,
          gmv_native=None, gmv_currency="", gmv_usd_bn=None, growth_pct=None,
          best_sellers="Бренды с готовым e-commerce",
          best_creators="—",
          buyer_profile="Миллениалы, Gen X",
-         outcome="Свёрнуто", lesson_for_vk="Вкладку Shop убрали из навигации (2023), live shopping закрыли (2022–2023). Отдельная витрина без потока контента не прижилась — прямая параллель с главной Маркета VK (0,2% открытий)",
-         sources="S18;S19;S20;S21"),
+         outcome="Свёрнуто", lesson_for_vk="Вкладку Shop убрали из навигации (2023), live shopping закрыли (2022–2023), а в 2025 Meta по всему миру отказалась от оплаты внутри Facebook и Instagram. Отдельная витрина без потока контента не прижилась — параллель с главной Маркета VK (0,2% открытий)",
+         sources="S18;S19;S20;S21;S44"),
     dict(platform="Facebook Marketplace + Messenger", market="США и мир", archetype="Классифайд внутри соцсети + переписка",
          where_buy="Договорённость в сообщениях, оплата часто вне платформы", year=2024,
          gmv_native=None, gmv_currency="", gmv_usd_bn=None, growth_pct=None,
@@ -291,6 +316,66 @@ CATS = [
 ]
 
 
+# Закрытые попытки отдельных витрин и оплаты в соцсетях
+CLOSURES = [
+    ("Meta: Facebook и Instagram Shops", "США и мир", "Оплата заказа внутри Facebook и Instagram", "2020–2025",
+     "С июня по август 2025 покупка по всему миру уходит на сайт продавца; витрины и карточки остались",
+     "По словам Meta — больше контроля продавцу над чекаутом и проще настройка",
+     "Даже крупнейшая соцсеть без своей логистики и платёжной экосистемы отказалась от оплаты внутри", "S44;S45"),
+    ("Instagram", "США и мир", "Вкладка Shop в навигации и live shopping", "2020–2023",
+     "Вкладку убрали из навигации, live shopping закрыли", "Возврат фокуса на рекламу и контент",
+     "Отдельная точка входа в магазин не собрала трафик", "S18;S19"),
+    ("Facebook Live Shopping", "США и мир", "Эфиры с товарами", "2018–2022",
+     "Закрыт 1 октября 2022", "Привычки пользователей сместились к Reels",
+     "Без сильного контентного формата эфиры с покупкой не взлетели", "S46"),
+    ("Pinterest", "США и мир", "Buyable Pins — покупка внутри Pinterest", "2015–2018",
+     "Заменены Product Pins со ссылкой на сайт магазина; в 2023 отказались и от планов на свой чекаут",
+     "Пользователи предпочитали покупать на сайте магазина",
+     "Оплата внутри платформы не нужна, если покупателю не дают причины доверять ей больше, чем магазину", "S47;S48"),
+    ("Twitter", "США и мир", "Кнопка Buy в твитах", "2014–2017",
+     "Команду коммерции распустили в 2016, канал продаж свернули", "Переход к рекламе товаров",
+     "Покупка без контекста и сообщества продавца не прижилась", "S49"),
+    ("Amazon Inspire (обратный случай)", "США", "Лента коротких видео внутри маркетплейса", "2022–2025",
+     "Закрыта меньше чем через два года", "Просмотры плохо превращались в продажи",
+     "Маркетплейсу трудно пристроить соцсеть; у VK контент и социальный граф уже есть", "S50"),
+]
+
+# Как юридически устроена оплата внутри платформы
+PAYMENTS = [
+    ("TikTok Shop", "США", "Компании и частные лица (Individual по SSN)", "TikTok как маркетплейс",
+     "Оплата внутри приложения, выплата продавцу на банковский счёт",
+     "Налог с продаж собирает TikTok как оператор маркетплейса", "Частное лицо продаёт без регистрации компании", "S51", "secondary"),
+    ("Meta Shops (до 2025)", "США", "Компании", "Платёжный провайдер Meta — главный продавец в цепочке, магазин — субпродавец",
+     "Выплата в течение 30 дней после отметки об отправке", "—", "Схема работала, но в 2025 Meta её свернула", "S52;S44", "secondary"),
+    ("WeChat Mini Store", "Китай", "Компании и индивидуальные предприниматели; личному магазину нужна лицензия ИП",
+     "WeChat Pay (лицензированная платёжная организация Tencent)", "Оплата внутри мессенджера", "—",
+     "Регистрация нужна даже малому продавцу", "S53", "official"),
+    ("Авито Доставка", "Россия", "Частные лица, самозанятые, ИП, компании",
+     "Авито; кошелёк для физлиц — РНКО «Платежный конструктор»",
+     "Деньги резервируются до получения товара, затем выплата продавцу; юристы описывают как комиссию + перевозку",
+     "Продавцы проходят проверку: ИНН, Госуслуги, банковский ID", "Образец для «оплаты в переписке» с защитой покупателя", "S54;S55;S56", "research"),
+    ("Ozon, Wildberries, Яндекс Маркет", "Россия", "ИП, компании, самозанятые", "Маркетплейс как агент",
+     "Агентская схема: выплата продавцу за вычетом комиссии",
+     "Кассовый чек покупателю пробивает агент; самозанятый выписывает чек в «Мой налог» на полученную сумму (база налога спорна)",
+     "Агентская схема — норма российского рынка", "S57;S58", "secondary"),
+    ("Платформы Яндекса", "Россия", "Самозанятые", "Платформа",
+     "Платформа сама формирует чеки самозанятых как партнёр ФНС", "Чеки в «Мой налог» передаются автоматически",
+     "VK может формировать чеки за самозанятых сам", "S59;S60", "secondary"),
+    ("Telegram", "Россия", "Самозанятые, ИП, компании", "Внешний провайдер: ЮKassa, Robokassa, CloudPayments",
+     "Физические товары — через провайдера; Stars — только цифровые товары", "Договор с провайдером может заключить самозанятый",
+     "Платёжную часть можно отдать провайдеру", "S61;S62", "secondary"),
+    ("VK Pay", "Россия", "Компании и ИП (про самозанятых данных не найдено)", "РНКО «ВК Платёжные решения»",
+     "Выплата на расчётный счёт за 3 рабочих дня", "Чеки по 54-ФЗ настраивает продавец",
+     "Инфраструктура есть; проверить доступ самозанятым и работу в сообществах сейчас", "S63", "official"),
+    ("Магазин сообщества VK (Магазин 2.0)", "Россия", "Сообщества", "Продавец или VK Pay",
+     "Есть вариант оплаты при получении или самовывозе; доставка СДЭК и Boxberry в 5 000+ пунктов выдачи", "—",
+     "Заказ без онлайн-оплаты возможен — это объясняет 1,2% оплаченных заказов Маркета", "S64;S65", "secondary"),
+    ("Шопсы VK (товары Ozon)", "Россия", "Продавцы Ozon", "Ozon (мини-приложение внутри VK, вход через Ozon ID)",
+     "Заказ и оплата проходят у Ozon, интерфейс — внутри VK", "Правила Ozon",
+     "Интерфейс в VK, но сделка принадлежит партнёру", "S66;S24", "secondary"),
+]
+
+
 def write(name, rows, header):
     with open(OUT / name, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
@@ -305,8 +390,26 @@ write("demographics.csv", DEMO, ["market", "segment", "metric", "value", "unit",
 write("russia_nafi.csv", [r + ("S25",) for r in RU_TRUST], ["block", "item", "metric", "value_pct", "source_id"])
 write("creators.csv", CREATORS, ["platform", "tier", "engagement_pct", "metric", "source_id"])
 write("categories.csv", CATS, ["platform", "category", "share_pct", "metric", "year", "source_id"])
+write("closures.csv", CLOSURES, ["platform", "market", "feature", "years", "what_happened", "stated_reason", "lesson_for_vk", "source_ids"])
+write("payments.csv", PAYMENTS, ["platform", "market", "who_can_sell", "who_takes_payment", "scheme", "receipts_and_tax", "lesson_for_vk", "source_ids", "confidence"])
 
 ids = {s[0] for s in SOURCES}
-used = {x for c in CASES for x in c["sources"].split(";")} | {r["source_id"] for r in M} | {d[6] for d in DEMO} | {"S25"} | {c[4] for c in CREATORS} | {c[5] for c in CATS}
+used = ({x for c in CASES for x in c["sources"].split(";")} | {r["source_id"] for r in M} | {d[6] for d in DEMO} | {"S25"}
+        | {c[4] for c in CREATORS} | {c[5] for c in CATS}
+        | {x for c in CLOSURES for x in c[-1].split(";")} | {x for p in PAYMENTS for x in p[-2].split(";")})
 assert used <= ids, used - ids
-print(f"ok: {len(CASES)} кейсов, {len(M)} показателей, {len(SOURCES)} источников; не использованы: {sorted(ids - used)}")
+
+# Реестр источников в Markdown
+TYPES = {"official": "отчётность или документация компании", "research": "отраслевое или научное исследование",
+         "secondary": "вторичный пересказ, на слайде с пометкой «оценка»"}
+md = ["# Источники исследования социальной коммерции", "",
+      "У каждого показателя в `data/*.csv` есть `source_id` из этого списка. Список собирается скриптом `materials/scripts/build_research_data.py`.", "",
+      "| ID | Издатель | Материал | Дата | Тип |", "|---|---|---|---|---|"]
+for sid, pub, title, url, date, typ in SOURCES:
+    link = f"[{title}]({url})" if url.startswith("http") else f"{title} (`{url}`)"
+    md.append(f"| {sid} | {pub} | {link} | {date} | {typ} |")
+md += ["", "**Типы:** " + "; ".join(f"`{k}` — {v}" for k, v in TYPES.items()) + "."]
+(OUT.parent / "SOURCES.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+
+print(f"ok: {len(CASES)} кейсов, {len(M)} показателей, {len(CLOSURES)} закрытых попыток, {len(PAYMENTS)} схем оплаты, "
+      f"{len(SOURCES)} источников; не использованы: {sorted(ids - used)}")

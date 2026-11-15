@@ -1,6 +1,6 @@
 # Источники исследования социальной коммерции
 
-Дата сбора: 16 ноября 2026. У каждого показателя в `data/metrics.csv`, `data/demographics.csv` и других таблицах есть `source_id` из этого списка.
+У каждого показателя в `data/*.csv` есть `source_id` из этого списка. Список собирается скриптом `materials/scripts/build_research_data.py`.
 
 | ID | Издатель | Материал | Дата | Тип |
 |---|---|---|---|---|
@@ -46,5 +46,28 @@
 | S41 | Chozan | [PDD Holdings: how Pinduoduo and Temu built a social commerce model](https://chozan.co/pdd-holdings/) | 2025 | secondary |
 | S42 | Entrepreneur India | [Inside Meesho: insights from India's most misunderstood unicorn (reseller model, women)](https://india.entrepreneur.com/news-and-trends/inside-meesho-insights-from-indias-most-misunderstood/502064) | 2023 | secondary |
 | S43 | VK Case Champ | Синтетический датасет кейса (sources/dataset.xlsx), сентябрь 2026 (`sources/dataset.xlsx`) | 2026-11 | official |
+| S44 | PPC Land | [Meta phases out Facebook and Instagram Shops checkout by August 2025](https://ppc.land/meta-phases-out-facebook-and-instagram-shops-checkout-by-august-2025/) | 2025-06-29 | secondary |
+| S45 | Value Added Resource | [Meta phases out native checkout experience for Facebook & Instagram Shops](https://www.valueaddedresource.net/meta-phases-out-native-checkout-facebook-instagram-shops/) | 2025-06 | secondary |
+| S46 | Business of Fashion | [Facebook to shut down live shopping, focus on Reels](https://www.businessoffashion.com/news/technology/facebook-to-shut-down-live-shopping-focus-on-reels/) | 2022-08 | secondary |
+| S47 | Engadget | [Pinterest rolls out Product Pins (Buyable Pins sunset)](https://www.engadget.com/2018-10-16-pinterest-product-pins.html) | 2018-10-16 | secondary |
+| S48 | PYMNTS | [Pinterest invests in shopping tech; drops plans for direct checkout](https://pymnts.com/news/retail/2023/pinterest-invests-in-shopping-tech-to-retain-platforms-merchants) | 2023 | secondary |
+| S49 | BuzzFeed News | [Twitter disbands commerce team, ceases product development on Buy button](https://www.buzzfeednews.com/article/alexkantrowitz/twitter-disbands-commerce-team-ceases-product-development-on) | 2016-05 | secondary |
+| S50 | Retail TouchPoints | [As TikTok Shop expands, Amazon shuts down Inspire social shopping feed](https://www.retailtouchpoints.com/news/as-tiktok-shop-expands-to-new-markets-amazon-shuts-down-inspire-social-shopping-feed/150182/) | 2025-02 | secondary |
+| S51 | Racklify (гайд для продавцов) | [TikTok Shop: business vs personal verification (US)](https://racklify.com/encyclopedia/business-vs-personal-verification-for-tiktok-shop-us/) | 2025 | secondary |
+| S52 | ShopSettings Help Center | [Processing orders made directly on Facebook and Instagram by Meta (US stores)](https://help.shopsettings.com/hc/en-us/articles/16911744353687-Processing-orders-made-directly-on-Facebook-and-Instagram-by-Meta-for-the-US-stores) | 2023 | secondary |
+| S53 | WeChat (документация) | [Mini Store: shop type differences](https://developers.weixin.qq.com/minigame/en/product/mini-store/shoptypedifferences.html) | 2024 | official |
+| S54 | РНКО «Платежный конструктор» | [Оферта для пользователей сайта Авито (электронное средство платежа)](https://paymentkit.ru/doc/docs_uslugi_oferta_avito.pdf) | 2024 | official |
+| S55 | Журнал Lex Russica / МГЮА | [Правовая природа договоров при продаже через «Авито-доставку»](https://ruslawonline.msal.ru/jour/article/download/177/171) | 2023 | research |
+| S56 | Цифровая экономика / Авито | [Исследование Авито: верификация продавцов через Госуслуги, ИНН, банковский ID](https://d-economy.ru/news/issledovanie-avito-pochti-70-pokupatelej-doverjajut-verifikacii-cherez-gosuslugi-a-38-prodavcov-prohodjat-proverku-s-pomoshhju-pasporta) | 2025 | secondary |
+| S57 | МойСклад | [Самозанятые на маркетплейсах](https://www.moysklad.ru/poleznoe/marketplejsy/samozanyatye-na-marketpleysah/amp/) | 2025 | secondary |
+| S58 | Контур | [Формирование чека агента за самозанятого](https://kontur.ru/qa/19839) | 2024 | secondary |
+| S59 | ppt.ru / ФНС | [Самозанятым на платформах «Яндекса» не нужно формировать чеки до 1 ноября](https://ppt.ru/news/samozanyatie/samozanyatym-na-platformakh-yandeksa-ne-nuzhno-formirovat-cheki-do-1-noyabrya) | 2026-10 | secondary |
+| S60 | ЮKassa (документация) | [API выплат: выплаты самозанятым с автоматической регистрацией чека в «Мой налог»](https://yookassa.ru/docs/payouts/supplementary/changelog) | 2025 | official |
+| S61 | Habr | [Приём платежей в Telegram-боте через ЮKassa (самозанятый)](https://habr.com/ru/articles/821415/) | 2024 | secondary |
+| S62 | Telegram (документация) | [Bot Payments API for Digital Goods and Services (Stars)](https://core.telegram.org/bots/payments-stars) | 2024 | official |
+| S63 | VK (справка) | [VK Pay для ЮЛ и ИП](https://vk.ru/@vk_id-vk-pay-for-business) | 2024 | official |
+| S64 | eLama | [Продажи в соцсетях: продвижение товаров во ВКонтакте (способы оплаты, в т.ч. при получении)](https://elama.ru/blog/prodazhi-v-socsetyah-chto-nuzhno-znat-o-prodvizhenii-tovarov-vo-vkontakte-chtoby-bolshe-zarabatyvat/) | 2025 | secondary |
+| S65 | VK (справка) | [Гид по Магазину 2.0 (доставка СДЭК и Boxberry, онлайн-оплата)](https://vk.ru/@business-magazin-2-0) | 2025 | official |
+| S66 | ppc.world | [Теперь купить товары с Ozon можно прямо внутри ВКонтакте (мини-приложение, Ozon ID)](https://ppc.world/news/teper-kupit-tovary-s-ozon-mozhno-pryamo-vnutri-vkontakte/) | 2024-10-09 | secondary |
 
-**Типы:** `official` — отчётность/пресс-релиз компании; `research` — отраслевое исследование; `secondary` — вторичный пересказ, использовать с пометкой «оценка».
+**Типы:** `official` — отчётность или документация компании; `research` — отраслевое или научное исследование; `secondary` — вторичный пересказ, на слайде с пометкой «оценка».
