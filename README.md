@@ -11,11 +11,9 @@
 | [`PLAN.md`](PLAN.md), [`docs/`](docs/) | План решения, спецификация анализа и модели, вопросы для Q&A и интервью |
 | [`sources/`](sources/) | Бриф кейса (PDF) и датасет организаторов (XLSX) |
 | [`notebooks/`](notebooks/) | `01_dataset_eda` — анализ датасета; `02_social_commerce_benchmarks` — мировые бенчмарки |
-| [`figures/eda/`](figures/eda/) | 19 графиков по датасету для слайдов |
-| [`research/`](research/) | Данные исследования рынка (12 платформ, 55 показателей), 42 источника, 8 графиков для слайдов |
-| [`pages/`](pages/) | Локальные копии страниц с объяснениями |
-| [`scripts/`](scripts/) | Сборка и запуск ноутбуков |
+| [`research/`](research/) | Данные исследования рынка (12 платформ, 55 показателей) и 42 источника |
 | [`reports/`](reports/) | Отчёты о проделанной работе |
+| [`materials/`](materials/) | Вспомогательное: графики для слайдов (`figures/eda`, `figures/benchmarks`), копии страниц (`pages`), скрипты сборки (`scripts`) |
 
 ## Онлайн
 
@@ -26,10 +24,10 @@
 ## Как пересобрать
 
 ```bash
-python research/build_data.py
-python scripts/build_nb01_eda.py notebooks/01_dataset_eda.ipynb
-python scripts/build_nb02_benchmarks.py .
-cd notebooks && python ../scripts/run_notebook.py 01_dataset_eda.ipynb && python ../scripts/run_notebook.py 02_social_commerce_benchmarks.ipynb
+python materials/scripts/build_research_data.py
+python materials/scripts/build_nb01_eda.py notebooks/01_dataset_eda.ipynb
+python materials/scripts/build_nb02_benchmarks.py .
+cd notebooks && python ../materials/scripts/run_notebook.py 01_dataset_eda.ipynb && python ../materials/scripts/run_notebook.py 02_social_commerce_benchmarks.ipynb
 ```
 
 Нужны `pandas`, `openpyxl`, `matplotlib`, `jinja2`, `nbformat`, `nbclient`, `ipykernel`. Ноутбуки запускаются из папки `notebooks/`, чтобы найти данные по относительным путям.

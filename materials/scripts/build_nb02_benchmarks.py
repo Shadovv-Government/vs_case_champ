@@ -71,7 +71,7 @@ try:
 except Exception:
     pass
 
-SLIDES = Path("../research/slides") if Path("../research").exists() else Path("slides_png")  # PNG для слайдов
+SLIDES = Path("../materials/figures/benchmarks") if Path("../materials").exists() else Path("slides_png")  # PNG для слайдов
 SLIDES.mkdir(parents=True, exist_ok=True)
 
 def ru(x, d=0):

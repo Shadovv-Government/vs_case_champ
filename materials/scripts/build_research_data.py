@@ -4,12 +4,12 @@
   official  — отчётность или пресс-релиз самой компании
   research  — отраслевое исследование (Momentum Works, McKinsey, Accenture, НАФИ, Data Insight, eMarketer…)
   secondary — пересказ в СМИ/блогах без доступа к первоисточнику; использовать с оговоркой
-Запуск: python research/build_data.py
+Запуск из корня репозитория: python materials/scripts/build_research_data.py
 """
 from pathlib import Path
 import csv
 
-OUT = Path(__file__).parent / "data"
+OUT = Path(__file__).resolve().parents[2] / "research" / "data"
 OUT.mkdir(exist_ok=True)
 
 # ---------------------------------------------------------------- источники

@@ -8,14 +8,14 @@ VK Case Champ 2026, отборочный этап. Что изучено, что
 |---|---|
 | Ноутбук: разведочный анализ датасета | [Colab](https://colab.research.google.com/drive/11g_E_x02hNgS-nOGpGZpBCtKx-pvHsGF) · [`notebooks/01_dataset_eda.ipynb`](../notebooks/01_dataset_eda.ipynb) |
 | Ноутбук: мировые бенчмарки соцкоммерции | [Colab](https://colab.research.google.com/drive/1Bqm8b2tjVNvrFRQp_HSaYVGOx3jWGRur) · [`notebooks/02_social_commerce_benchmarks.ipynb`](../notebooks/02_social_commerce_benchmarks.ipynb) |
-| Объяснение анализа датасета | [Страница](https://claude.ai/artifact/H5NzaMgGyBjVvQk41oC9A1) · копия в [`pages/eda_explainer/`](../pages/eda_explainer/index.html) |
-| Выжимка исследования для слайдов | [Страница](https://claude.ai/artifact/YUQ9ribn2rD67jviLETnyQ) · копия в [`pages/benchmarks/`](../pages/benchmarks/index.html) |
+| Объяснение анализа датасета | [Страница](https://claude.ai/artifact/H5NzaMgGyBjVvQk41oC9A1) · копия в [`materials/pages/eda_explainer/`](../materials/pages/eda_explainer/index.html) |
+| Выжимка исследования для слайдов | [Страница](https://claude.ai/artifact/YUQ9ribn2rD67jviLETnyQ) · копия в [`materials/pages/benchmarks/`](../materials/pages/benchmarks/index.html) |
 | Папка с ноутбуками в Google Drive | [Drive](https://drive.google.com/drive/folders/1dL-aZwn2WfxsymEzz5fZYjfSZtA-OLL_?usp=sharing) |
 | Данные исследования и источники | [`research/data/`](../research/data/), [`research/SOURCES.md`](../research/SOURCES.md) — 42 источника |
-| Графики для слайдов | [`figures/eda/`](../figures/eda/) — 19 графиков по датасету; [`research/slides/`](../research/slides/) — 8 графиков по рынку |
+| Графики для слайдов | [`materials/figures/eda/`](../materials/figures/eda/) — 19 графиков по датасету; [`materials/figures/benchmarks/`](../materials/figures/benchmarks/) — 8 графиков по рынку |
 | Исходный план команды | [`PLAN.md`](../PLAN.md), [`docs/ANALYSIS_AND_MODEL.md`](../docs/ANALYSIS_AND_MODEL.md), [`docs/QUESTIONS_AND_SOURCES.md`](../docs/QUESTIONS_AND_SOURCES.md) |
 
-Страницы на claude.ai приватные. Чтобы их увидела команда, откройте доступ через меню Share на странице. Копии страниц в `pages/` открываются локально в браузере.
+Страницы на claude.ai приватные. Чтобы их увидела команда, откройте доступ через меню Share на странице. Копии страниц в `materials/pages/` открываются локально в браузере.
 
 ---
 
@@ -260,10 +260,10 @@ VK Case Champ 2026, отборочный этап. Что изучено, что
 | 1. Титул | Название решения и обещание продавцу | — |
 | 2. Команда | Город, участники, роли | — |
 | 3. Резюме | Сегмент, механика, роль Маркета, эффект, пилот | Раздел 1 отчёта |
-| 4. Проблема | Приём заказов есть, оплаты и спроса нет; 61% без первой продажи | `figures/eda/03`, `04`, `12`, `13` |
-| 5. Альтернативы | 7 моделей по 5 критериям; уроки мировых платформ | `research/slides/02`, `08` |
+| 4. Проблема | Приём заказов есть, оплаты и спроса нет; 61% без первой продажи | `materials/figures/eda/03`, `04`, `12`, `13` |
+| 5. Альтернативы | 7 моделей по 5 критериям; уроки мировых платформ | `materials/figures/benchmarks/02`, `08` |
 | 6. Концепция | Путь продавца из раздела 5.2 и развилки 5.3 | Нарисовать схему пути |
-| 7. Обоснование и экономика | Разрывы с бенчмарками, модель, чувствительность | `research/slides/07`, модель |
+| 7. Обоснование и экономика | Разрывы с бенчмарками, модель, чувствительность | `materials/figures/benchmarks/07`, модель |
 | 8. Внедрение | Пилот, план на 30/60/90 дней, риски, метрики | Раздел 5.7 и 7 |
 
 В приложения: сверки данных, сегментация, бенчмарки, источники, раскрытие ИИ.
@@ -283,15 +283,18 @@ VK Case Champ 2026, отборочный этап. Что изучено, что
 ## 10. Структура репозитория
 
 ```text
+README.md                   карта репозитория
 PLAN.md                     план команды
+reports/                    отчёты о проделанной работе
+notebooks/                  01 — анализ датасета, 02 — мировые бенчмарки
+research/                   данные исследования рынка и 42 источника
 docs/                       спецификация анализа, вопросы и источники
 sources/                    бриф (PDF) и датасет (XLSX)
-notebooks/                  01 — анализ датасета, 02 — мировые бенчмарки
-figures/eda/                19 графиков по датасету для слайдов
-research/                   данные исследования рынка, источники, 8 графиков для слайдов
-pages/                      локальные копии двух страниц с объяснениями
-scripts/                    сборка и запуск ноутбуков
-reports/                    отчёты о проделанной работе
+materials/                  вспомогательное
+  figures/eda/              19 графиков по датасету для слайдов
+  figures/benchmarks/       8 графиков по рынку для слайдов
+  pages/                    локальные копии двух страниц с объяснениями
+  scripts/                  сборка данных и ноутбуков
 ```
 
 ## 11. Использование ИИ
