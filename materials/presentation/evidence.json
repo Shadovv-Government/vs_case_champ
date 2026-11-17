@@ -1,0 +1,54 @@
+{
+  "source": "sources/dataset.xlsx",
+  "synthetic": true,
+  "goods_communities": 4158,
+  "checkout_enabled": 3826,
+  "selling_in_month": 285,
+  "warm_zero_orders": 233,
+  "warm_at_least_10_opens": 39,
+  "checkout_pct": 92.01539201539202,
+  "selling_pct": 6.854256854256854,
+  "market_total_opens": 193512461,
+  "traffic": {
+    "Другое": {
+      "opens": 77753037,
+      "share_pct": 40.17986056205445
+    },
+    "Витрина магазина": {
+      "opens": 75604323,
+      "share_pct": 39.06948555628157
+    },
+    "Лента": {
+      "opens": 18795696,
+      "share_pct": 9.712912493009947
+    },
+    "Клипы": {
+      "opens": 17239066,
+      "share_pct": 8.908504346911283
+    },
+    "Поиск": {
+      "opens": 3707521,
+      "share_pct": 1.9159081440238621
+    },
+    "Главная Маркета Вконтакте": {
+      "opens": 412818,
+      "share_pct": 0.21332889771889157
+    }
+  },
+  "economics_assumptions": {
+    "aov_rub": 2000,
+    "seller_gross_margin": 0.35,
+    "seller_receipt_cost_rub": 100,
+    "fee": 0.03,
+    "acquiring": 0.01,
+    "variable_cost_per_paid_order_rub": 10,
+    "development_rub": 2400000,
+    "monthly_fixed_rub": 150000,
+    "payback_months_after_scale": 12
+  },
+  "monthly_extra_order_threshold": {
+    "0.25": 46666.666666666664,
+    "0.5": 23333.333333333332,
+    "0.75": 15555.555555555555
+  }
+}
