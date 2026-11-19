@@ -4,9 +4,14 @@
   "goods_communities": 4158,
   "checkout_enabled": 3826,
   "selling_in_month": 285,
+  "checkout_and_catalog": 3637,
+  "ready_with_content_opens": 308,
+  "ready_with_content_opens_and_orders": 75,
+  "ready_zero_orders_zero_content_opens": 3126,
   "warm_zero_orders": 233,
   "warm_at_least_10_opens": 39,
-  "checkout_pct": 92.01539201539202,
+  "warm_median_opens": 2,
+  "checkout_pct": 92.01539201539201,
   "selling_pct": 6.854256854256854,
   "market_total_opens": 193512461,
   "traffic": {
@@ -16,7 +21,7 @@
     },
     "Витрина магазина": {
       "opens": 75604323,
-      "share_pct": 39.06948555628157
+      "share_pct": 39.06948555628156
     },
     "Лента": {
       "opens": 18795696,
@@ -32,23 +37,378 @@
     },
     "Главная Маркета Вконтакте": {
       "opens": 412818,
-      "share_pct": 0.21332889771889157
+      "share_pct": 0.2133288977188916
     }
   },
-  "economics_assumptions": {
-    "aov_rub": 2000,
-    "seller_gross_margin": 0.35,
-    "seller_receipt_cost_rub": 100,
-    "fee": 0.03,
-    "acquiring": 0.01,
-    "variable_cost_per_paid_order_rub": 10,
-    "development_rub": 2400000,
-    "monthly_fixed_rub": 150000,
-    "payback_months_after_scale": 12
-  },
-  "monthly_extra_order_threshold": {
-    "0.25": 46666.666666666664,
-    "0.5": 23333.333333333332,
-    "0.75": 15555.555555555555
+  "projection": {
+    "reference_goods_communities": 100000,
+    "eligible_share": 0.05603655603655604,
+    "eligible_share_strict": 0.00937950937950938,
+    "eligible": 5603.655603655604,
+    "economics": {
+      "aov_rub": 2000,
+      "seller_gross_margin": 0.35,
+      "seller_fulfillment_rub": 100,
+      "service_fee": 0.03,
+      "acquiring": 0.01,
+      "variable_cost_per_paid_order_rub": 10,
+      "development_rub": 2400000,
+      "monthly_fixed_rub": 150000,
+      "steady_payback_months": 12
+    },
+    "vk_contribution_per_paid_order_rub": 30.0,
+    "seller_contribution_per_completed_order_without_service_rub": 600.0,
+    "seller_contribution_per_completed_order_with_service_rub": 540.0,
+    "monthly_fixed_plus_development_rub": 350000.0,
+    "scenarios": {
+      "low": {
+        "reach": 0.3,
+        "adoption": 0.15,
+        "orders_per_adopter": 0.1,
+        "seller_rate_lift": 0.05,
+        "paid_share": 0.05,
+        "reached": 1681.096681096681,
+        "adopters": 252.16450216450215,
+        "monthly_incremental_orders_at_scale": 25.216450216450216,
+        "monthly_incremental_selling_communities_at_scale": 12.608225108225108,
+        "monthly_incremental_orders_per_reached_community": 0.015,
+        "monthly_vk_fee_revenue_rub_at_scale": 75.64935064935065,
+        "monthly_order_hurdle": 233334,
+        "orders_per_adopter_for_payback": 925.3245321888412,
+        "year_one_orders": 138.69047619047618,
+        "year_one_vk_cash_flow_rub": -4199791.964285715,
+        "year_one_other_contribution_needed_per_adopter_month_rub": 3028.17618025751,
+        "months": [
+          {
+            "month": 1,
+            "scale": 0,
+            "incremental_orders": 0.0,
+            "incremental_selling_communities": 0.0,
+            "vk_fee_revenue_rub": 0.0,
+            "vk_cash_flow_rub": -2550000.0
+          },
+          {
+            "month": 2,
+            "scale": 0,
+            "incremental_orders": 0.0,
+            "incremental_selling_communities": 0.0,
+            "vk_fee_revenue_rub": 0.0,
+            "vk_cash_flow_rub": -150000.0
+          },
+          {
+            "month": 3,
+            "scale": 0,
+            "incremental_orders": 0.0,
+            "incremental_selling_communities": 0.0,
+            "vk_fee_revenue_rub": 0.0,
+            "vk_cash_flow_rub": -150000.0
+          },
+          {
+            "month": 4,
+            "scale": 0.1,
+            "incremental_orders": 2.5216450216450217,
+            "incremental_selling_communities": 1.2608225108225108,
+            "vk_fee_revenue_rub": 7.564935064935066,
+            "vk_cash_flow_rub": -149996.21753246753
+          },
+          {
+            "month": 5,
+            "scale": 0.2,
+            "incremental_orders": 5.043290043290043,
+            "incremental_selling_communities": 2.5216450216450217,
+            "vk_fee_revenue_rub": 15.129870129870133,
+            "vk_cash_flow_rub": -149992.43506493507
+          },
+          {
+            "month": 6,
+            "scale": 0.35,
+            "incremental_orders": 8.825757575757574,
+            "incremental_selling_communities": 4.412878787878787,
+            "vk_fee_revenue_rub": 26.477272727272723,
+            "vk_cash_flow_rub": -149986.76136363635
+          },
+          {
+            "month": 7,
+            "scale": 0.5,
+            "incremental_orders": 12.608225108225108,
+            "incremental_selling_communities": 6.304112554112554,
+            "vk_fee_revenue_rub": 37.824675324675326,
+            "vk_cash_flow_rub": -149981.08766233767
+          },
+          {
+            "month": 8,
+            "scale": 0.65,
+            "incremental_orders": 16.39069264069264,
+            "incremental_selling_communities": 8.19534632034632,
+            "vk_fee_revenue_rub": 49.17207792207793,
+            "vk_cash_flow_rub": -149975.41396103895
+          },
+          {
+            "month": 9,
+            "scale": 0.8,
+            "incremental_orders": 20.173160173160174,
+            "incremental_selling_communities": 10.086580086580087,
+            "vk_fee_revenue_rub": 60.51948051948053,
+            "vk_cash_flow_rub": -149969.74025974027
+          },
+          {
+            "month": 10,
+            "scale": 0.9,
+            "incremental_orders": 22.694805194805195,
+            "incremental_selling_communities": 11.347402597402597,
+            "vk_fee_revenue_rub": 68.0844155844156,
+            "vk_cash_flow_rub": -149965.9577922078
+          },
+          {
+            "month": 11,
+            "scale": 1,
+            "incremental_orders": 25.216450216450216,
+            "incremental_selling_communities": 12.608225108225108,
+            "vk_fee_revenue_rub": 75.64935064935065,
+            "vk_cash_flow_rub": -149962.17532467534
+          },
+          {
+            "month": 12,
+            "scale": 1,
+            "incremental_orders": 25.216450216450216,
+            "incremental_selling_communities": 12.608225108225108,
+            "vk_fee_revenue_rub": 75.64935064935065,
+            "vk_cash_flow_rub": -149962.17532467534
+          }
+        ]
+      },
+      "base": {
+        "reach": 0.5,
+        "adoption": 0.3,
+        "orders_per_adopter": 0.25,
+        "seller_rate_lift": 0.1,
+        "paid_share": 0.15,
+        "reached": 2801.827801827802,
+        "adopters": 840.5483405483405,
+        "monthly_incremental_orders_at_scale": 210.13708513708514,
+        "monthly_incremental_selling_communities_at_scale": 84.05483405483406,
+        "monthly_incremental_orders_per_reached_community": 0.075,
+        "monthly_vk_fee_revenue_rub_at_scale": 1891.2337662337661,
+        "monthly_order_hurdle": 77778,
+        "orders_per_adopter_for_payback": 92.53245321888411,
+        "year_one_orders": 1155.7539682539682,
+        "year_one_vk_cash_flow_rub": -4194799.107142857,
+        "year_one_other_contribution_needed_per_adopter_month_rub": 907.3728540772531,
+        "months": [
+          {
+            "month": 1,
+            "scale": 0,
+            "incremental_orders": 0.0,
+            "incremental_selling_communities": 0.0,
+            "vk_fee_revenue_rub": 0.0,
+            "vk_cash_flow_rub": -2550000.0
+          },
+          {
+            "month": 2,
+            "scale": 0,
+            "incremental_orders": 0.0,
+            "incremental_selling_communities": 0.0,
+            "vk_fee_revenue_rub": 0.0,
+            "vk_cash_flow_rub": -150000.0
+          },
+          {
+            "month": 3,
+            "scale": 0,
+            "incremental_orders": 0.0,
+            "incremental_selling_communities": 0.0,
+            "vk_fee_revenue_rub": 0.0,
+            "vk_cash_flow_rub": -150000.0
+          },
+          {
+            "month": 4,
+            "scale": 0.1,
+            "incremental_orders": 21.013708513708515,
+            "incremental_selling_communities": 8.405483405483407,
+            "vk_fee_revenue_rub": 189.12337662337663,
+            "vk_cash_flow_rub": -149905.4383116883
+          },
+          {
+            "month": 5,
+            "scale": 0.2,
+            "incremental_orders": 42.02741702741703,
+            "incremental_selling_communities": 16.810966810966814,
+            "vk_fee_revenue_rub": 378.24675324675326,
+            "vk_cash_flow_rub": -149810.87662337662
+          },
+          {
+            "month": 6,
+            "scale": 0.35,
+            "incremental_orders": 73.54797979797979,
+            "incremental_selling_communities": 29.41919191919192,
+            "vk_fee_revenue_rub": 661.9318181818181,
+            "vk_cash_flow_rub": -149669.0340909091
+          },
+          {
+            "month": 7,
+            "scale": 0.5,
+            "incremental_orders": 105.06854256854257,
+            "incremental_selling_communities": 42.02741702741703,
+            "vk_fee_revenue_rub": 945.6168831168831,
+            "vk_cash_flow_rub": -149527.19155844155
+          },
+          {
+            "month": 8,
+            "scale": 0.65,
+            "incremental_orders": 136.58910533910534,
+            "incremental_selling_communities": 54.635642135642144,
+            "vk_fee_revenue_rub": 1229.301948051948,
+            "vk_cash_flow_rub": -149385.34902597402
+          },
+          {
+            "month": 9,
+            "scale": 0.8,
+            "incremental_orders": 168.10966810966812,
+            "incremental_selling_communities": 67.24386724386726,
+            "vk_fee_revenue_rub": 1512.987012987013,
+            "vk_cash_flow_rub": -149243.5064935065
+          },
+          {
+            "month": 10,
+            "scale": 0.9,
+            "incremental_orders": 189.12337662337663,
+            "incremental_selling_communities": 75.64935064935065,
+            "vk_fee_revenue_rub": 1702.1103896103896,
+            "vk_cash_flow_rub": -149148.9448051948
+          },
+          {
+            "month": 11,
+            "scale": 1,
+            "incremental_orders": 210.13708513708514,
+            "incremental_selling_communities": 84.05483405483406,
+            "vk_fee_revenue_rub": 1891.2337662337661,
+            "vk_cash_flow_rub": -149054.3831168831
+          },
+          {
+            "month": 12,
+            "scale": 1,
+            "incremental_orders": 210.13708513708514,
+            "incremental_selling_communities": 84.05483405483406,
+            "vk_fee_revenue_rub": 1891.2337662337661,
+            "vk_cash_flow_rub": -149054.3831168831
+          }
+        ]
+      },
+      "high": {
+        "reach": 0.7,
+        "adoption": 0.45,
+        "orders_per_adopter": 0.5,
+        "seller_rate_lift": 0.2,
+        "paid_share": 0.3,
+        "reached": 3922.5589225589224,
+        "adopters": 1765.151515151515,
+        "monthly_incremental_orders_at_scale": 882.5757575757575,
+        "monthly_incremental_selling_communities_at_scale": 353.030303030303,
+        "monthly_incremental_orders_per_reached_community": 0.22499999999999998,
+        "monthly_vk_fee_revenue_rub_at_scale": 15886.363636363636,
+        "monthly_order_hurdle": 38889,
+        "orders_per_adopter_for_payback": 22.031536480686697,
+        "year_one_orders": 4854.166666666666,
+        "year_one_vk_cash_flow_rub": -4156312.5,
+        "year_one_other_contribution_needed_per_adopter_month_rub": 428.11802575107293,
+        "months": [
+          {
+            "month": 1,
+            "scale": 0,
+            "incremental_orders": 0.0,
+            "incremental_selling_communities": 0.0,
+            "vk_fee_revenue_rub": 0.0,
+            "vk_cash_flow_rub": -2550000.0
+          },
+          {
+            "month": 2,
+            "scale": 0,
+            "incremental_orders": 0.0,
+            "incremental_selling_communities": 0.0,
+            "vk_fee_revenue_rub": 0.0,
+            "vk_cash_flow_rub": -150000.0
+          },
+          {
+            "month": 3,
+            "scale": 0,
+            "incremental_orders": 0.0,
+            "incremental_selling_communities": 0.0,
+            "vk_fee_revenue_rub": 0.0,
+            "vk_cash_flow_rub": -150000.0
+          },
+          {
+            "month": 4,
+            "scale": 0.1,
+            "incremental_orders": 88.25757575757575,
+            "incremental_selling_communities": 35.303030303030305,
+            "vk_fee_revenue_rub": 1588.6363636363633,
+            "vk_cash_flow_rub": -149205.68181818182
+          },
+          {
+            "month": 5,
+            "scale": 0.2,
+            "incremental_orders": 176.5151515151515,
+            "incremental_selling_communities": 70.60606060606061,
+            "vk_fee_revenue_rub": 3177.2727272727266,
+            "vk_cash_flow_rub": -148411.36363636365
+          },
+          {
+            "month": 6,
+            "scale": 0.35,
+            "incremental_orders": 308.9015151515151,
+            "incremental_selling_communities": 123.56060606060605,
+            "vk_fee_revenue_rub": 5560.227272727272,
+            "vk_cash_flow_rub": -147219.88636363635
+          },
+          {
+            "month": 7,
+            "scale": 0.5,
+            "incremental_orders": 441.28787878787875,
+            "incremental_selling_communities": 176.5151515151515,
+            "vk_fee_revenue_rub": 7943.181818181818,
+            "vk_cash_flow_rub": -146028.4090909091
+          },
+          {
+            "month": 8,
+            "scale": 0.65,
+            "incremental_orders": 573.6742424242424,
+            "incremental_selling_communities": 229.46969696969697,
+            "vk_fee_revenue_rub": 10326.136363636364,
+            "vk_cash_flow_rub": -144836.93181818182
+          },
+          {
+            "month": 9,
+            "scale": 0.8,
+            "incremental_orders": 706.060606060606,
+            "incremental_selling_communities": 282.42424242424244,
+            "vk_fee_revenue_rub": 12709.090909090906,
+            "vk_cash_flow_rub": -143645.45454545456
+          },
+          {
+            "month": 10,
+            "scale": 0.9,
+            "incremental_orders": 794.3181818181818,
+            "incremental_selling_communities": 317.7272727272727,
+            "vk_fee_revenue_rub": 14297.72727272727,
+            "vk_cash_flow_rub": -142851.13636363635
+          },
+          {
+            "month": 11,
+            "scale": 1,
+            "incremental_orders": 882.5757575757575,
+            "incremental_selling_communities": 353.030303030303,
+            "vk_fee_revenue_rub": 15886.363636363636,
+            "vk_cash_flow_rub": -142056.81818181818
+          },
+          {
+            "month": 12,
+            "scale": 1,
+            "incremental_orders": 882.5757575757575,
+            "incremental_selling_communities": 353.030303030303,
+            "vk_fee_revenue_rub": 15886.363636363636,
+            "vk_cash_flow_rub": -142056.81818181818
+          }
+        ]
+      }
+    }
   }
 }

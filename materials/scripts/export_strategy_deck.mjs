@@ -2,14 +2,16 @@
 // Requires the bundled @oai/artifact-tool runtime; no external dependencies.
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import os from 'node:os';
 import {pathToFileURL} from 'node:url';
 const root=process.cwd();
-const runtime=process.env.ARTIFACT_RUNTIME || 'C:/Program Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1116-1220-0_26.1116.1220.0_x64__3k8sg7r9htsxt/dependencies';
+const runtime=process.env.ARTIFACT_RUNTIME || path.join(os.homedir(),'.cache/codex-runtimes/codex-primary-runtime/dependencies');
 const {Presentation,PresentationFile}=await import(pathToFileURL(path.join(runtime,'node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs')).href);
 const src=await fs.readFile(path.join(root,'materials/scripts/build_strategy_deck.session.js'),'utf8');
-const build=new Function(src.slice(0,src.lastIndexOf('await artifactSession.run'))+'; return buildStrategyDeck;')();
+const build=new Function(src.split('// Live editor entry point.')[0]+'; return buildStrategyDeck;')();
 const p=Presentation.create({slideSize:{width:1280,height:720}});
-await build(p);
+const evidence=JSON.parse(await fs.readFile(path.join(root,'materials/presentation/evidence.json'),'utf8'));
+await build(p,evidence);
 const staging=path.join(root,'.local/deck-build');
 const dest=path.join(root,'presentation');
 await fs.mkdir(staging,{recursive:true});
