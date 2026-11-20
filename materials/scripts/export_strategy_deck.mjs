@@ -11,7 +11,8 @@ const src=await fs.readFile(path.join(root,'materials/scripts/build_strategy_dec
 const build=new Function(src.split('// Live editor entry point.')[0]+'; return buildStrategyDeck;')();
 const p=Presentation.create({slideSize:{width:1280,height:720}});
 const evidence=JSON.parse(await fs.readFile(path.join(root,'materials/presentation/evidence.json'),'utf8'));
-await build(p,evidence);
+const cover=await fs.readFile(path.join(root,'materials/presentation/ceramic-cover.png'));
+await build(p,evidence,Uint8Array.from(cover).buffer);
 const staging=path.join(root,'.local/deck-build');
 const dest=path.join(root,'presentation');
 await fs.mkdir(staging,{recursive:true});
