@@ -1,0 +1,275 @@
+<title>Разбор кейса VK Case Champ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: одна колонка для чтения (~70ch) + широкие блоки для графиков; слева узкая метка раздела */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #12151a;
+  --ink-2: #4a5160;
+  --muted: #7c8494;
+  --line: #e1e4ea;
+  --accent: #2a78d6;
+  --accent-soft: #e5effb;
+  --partner: #eb6834;
+  --good: #137a37;
+  --warn: #b4540f;
+  --f-display: "Unbounded", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Golos Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1216; --surface: #171b21; --ink: #eef0f3; --ink-2: #b8bfcb; --muted: #8a93a3;
+    --line: #2a303a; --accent: #5598e7; --accent-soft: #1a2a40; --partner: #ef7d4f;
+    --good: #46c46e; --warn: #f0a050; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1216; --surface: #171b21; --ink: #eef0f3; --ink-2: #b8bfcb; --muted: #8a93a3;
+  --line: #2a303a; --accent: #5598e7; --accent-soft: #1a2a40; --partner: #ef7d4f;
+  --good: #46c46e; --warn: #f0a050; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font: 16px/1.6 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 80px;
+}
+.wrap { max-width: 1040px; margin: 0 auto; display: grid; gap: 56px; }
+.read { max-width: 70ch; }
+header { display: grid; gap: 18px; }
+.eyebrow { font: 600 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 700 clamp(28px, 5vw, 44px)/1.12 var(--f-display); margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+h2 { font: 700 clamp(20px, 3vw, 26px)/1.2 var(--f-display); margin: 0; text-wrap: balance; }
+h3 { font: 600 18px/1.3 var(--f-body); margin: 0; }
+p { margin: 0; }
+.lede { font-size: 18px; color: var(--ink-2); max-width: 64ch; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 8px;
+  font: 600 14px/1 var(--f-body); text-decoration: none; border: 1px solid var(--line);
+  color: var(--ink); background: var(--surface);
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn small { font: 400 12px var(--f-mono); opacity: .8; }
+section { display: grid; gap: 22px; }
+.sec-head { display: grid; gap: 8px; }
+.sec-head .eyebrow { color: var(--muted); }
+.stack { display: grid; gap: 14px; }
+ul.tight { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+ul.tight li::marker { color: var(--accent); }
+b, strong { font-weight: 600; }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: .94em; }
+
+.task { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 14px; }
+.task ol { margin: 0; padding-left: 22px; display: grid; gap: 8px; }
+.task .goal { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 500 13px/1 var(--f-body); padding: 7px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.fact { border-top: 2px solid var(--line); padding-top: 12px; display: grid; gap: 6px; min-width: 0; }
+.fact .k { font: 600 12px/1.2 var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+.finding { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.finding .text { display: grid; gap: 8px; max-width: 72ch; }
+.finding .idx { font: 600 13px var(--f-mono); color: var(--accent); }
+figure { margin: 0; background: #fcfcfb; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+figure img { display: block; width: 100%; height: auto; }
+figcaption { font-size: 13px; color: var(--muted); padding: 10px 14px; background: var(--surface); border-top: 1px solid var(--line); }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px; }
+
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 600 12px var(--f-mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+.ok { color: var(--good); font-weight: 600; }
+.bad { color: var(--warn); font-weight: 600; }
+
+.next { border-left: 3px solid var(--accent); padding-left: 18px; display: grid; gap: 10px; }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 18px; }
+code { font: 13px var(--f-mono); background: var(--accent-soft); padding: 2px 6px; border-radius: 4px; }
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">VK Case Champ 2026 · отборочный этап</span>
+  <h1>Разбор кейса и датасета</h1>
+  <p class="lede">Что просят организаторы, что показывают данные за сентябрь 2026 и какие выводы из этого можно нести в стратегию. Все цифры воспроизводятся в Colab-ноутбуке.</p>
+  <div class="links">
+    <a class="btn primary" href="https://colab.research.google.com/drive/11g_E_x02hNgS-nOGpGZpBCtKx-pvHsGF" target="_blank" rel="noopener">Открыть ноутбук в Colab</a>
+    <a class="btn" href="https://github.com/Shadovv-Government/vs_case_champ" target="_blank" rel="noopener">Репозиторий <small>notebooks/01_dataset_eda.ipynb</small></a>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">1 · О чём кейс</span>
+    <h2>Пересказ брифа без художественной части</h2>
+  </div>
+  <div class="read stack">
+    <p>Большую часть PDF занимает история стажёрки Киры в первый день в департаменте стратегии VK. Если убрать сюжет, в диалогах зашиты такие вводные:</p>
+    <ul class="tight">
+      <li>Во ВКонтакте <b>больше миллиона бизнес-сообществ</b>, но единой стратегии их роста нет. Одни продают через контент, другие через витрину и Маркет, третьи только в переписке.</li>
+      <li><b>Инструментов много, но целостного пути нет.</b> Товарный контент, по словам продакта, распространяется хуже обычного, рекомендации для бизнес-сообществ работают слабо.</li>
+      <li>Фокус кейса — <b>предприниматель, который сам продаёт товары</b> через своё сообщество. Шопсы и продавцы маркетплейсов через блогеров — соседний сценарий. Услуги не рассматриваем.</li>
+      <li>VK сейчас зарабатывает в основном <b>на рекламе бизнеса</b>. Целевая модель монетизации не определена. Каждое предложение надо оценить с двух сторон: что получает бизнес и что получает VK.</li>
+      <li><b>Маркет ВКонтакте</b> — общая витрина с небольшой аудиторией, которую активно не развивают. Нужно решить, какая у неё роль. Ответ «отдельная витрина не нужна» допустим, если он обоснован.</li>
+      <li>Надо изучить рынок и практики, в том числе TikTok Shop, и сформулировать уникальное предложение VK.</li>
+      <li>Датасет синтетический и местами намеренно запутан. Прежде чем сравнивать группы, нужно проверить их сопоставимость. Ждут выводов на данных, а не «красивых графиков».</li>
+    </ul>
+  </div>
+
+  <div class="task">
+    <h3>Постановка задачи</h3>
+    <div class="goal"><span class="chip">Цель: больше бизнесов, продающих через VK</span><span class="chip">Метрика: бизнесы с подключёнными инструментами</span><span class="chip">Метрика: заказы внутри VK</span></div>
+    <ol>
+      <li>Определить место VK среди маркетплейсов, классифайдов и других каналов продаж.</li>
+      <li>Выбрать целевые бизнесы: их цели, трудности, задачи во VK, что мешает расти и как помочь.</li>
+      <li>Сформулировать уникальное предложение и инструменты продвижения, продаж и работы с клиентами, с эффектом для бизнеса и для VK.</li>
+      <li>По данным и открытым источникам определить роль Маркета ВКонтакте.</li>
+      <li>Спроектировать путь бизнеса от первого контакта до продажи с развилками и инструментами на каждом шаге.</li>
+    </ol>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><span class="k">Формат</span><p>PDF, ровно 8 слайдов, приложений сколько угодно. Имя файла: <code>команда_strategy_msk/spb</code>.</p></div>
+    <div class="fact"><span class="k">Сроки</span><p>Сдача до 22 ноября, 09:00, одна заявка от команды. Q&amp;A 16 ноября в 17:30. Финал 5 декабря.</p></div>
+    <div class="fact"><span class="k">Критерии</span><p>Широта и глубина анализа, единая логика, соответствие задаче, анализ датасета, качество слайдов.</p></div>
+    <div class="fact"><span class="k">ИИ</span><p>Можно, но нужно раскрыть инструменты и задачи. Без раскрытия работа не может победить.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">2 · Данные</span>
+    <h2>Что внутри Excel и как устроен ноутбук</h2>
+  </div>
+  <div class="read stack">
+    <p>Семь листов делятся на две несвязанные части. Лист <b>«Бизнесы»</b> — 9 754 сообщества, по строке на каждое: тип, тематика, контент, подключённые инструменты, заказы через чекаут, реклама. Остальные шесть листов — <b>агрегаты Маркета ВКонтакте и Партнёра</b> (условного внешнего маркетплейса): воронка, дни, источники трафика, категории, пол и возраст, регионы. Общего ключа нет, поэтому заказы Маркета нельзя привязать к конкретным сообществам.</p>
+    <p>Ноутбук идёт сверху вниз: качество данных → структура бизнесов → воронка инструментов → что связано с заказами → сегментация → Маркет против Партнёра → автоматические сверки → выводы. Каждый график подписан выводом в заголовке, поэтому их можно сразу забирать в приложения.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">3 · Главные находки</span>
+    <h2>Девять выводов, на которых можно строить стратегию</h2>
+  </div>
+
+  <div class="finding">
+    <div class="text"><span class="idx">01</span><h3>Продают только товарные сообщества</h3>
+    <p>Товарные и смешанные — 42% выборки (4 158), но 99% заказов и 98% GMV. Услужные и сообщества без каталога почти не пользуются чекаутом, поэтому дальше анализ идёт по 4 158 товарным.</p></div>
+    <figure><img src="../../figures/eda/02_business_types.png" alt="Доли типов бизнеса в сообществах, заказах и GMV" loading="lazy"><figcaption>Лист «Бизнесы», раздел 2 ноутбука</figcaption></figure>
+  </div>
+
+  <div class="finding">
+    <div class="text"><span class="idx">02</span><h3>Заказы в VK принимают почти все, онлайн-оплату и доставку — единицы</h3>
+    <p><b>Как читать признаки.</b> «Подключён чекаут» значит, что сообщество принимает заказы внутри VK: корзина и оформление, как в определении брифа. «Подключена оплата» и «Подключена доставка» — это, судя по данным, онлайн-оплата и интеграция со службой доставки. Заказ оформляется и без них: оплату и отправку продавец согласует с покупателем вручную, обычно в сообщениях. Это видно в самих данных: у сообществ без онлайн-оплаты и доставки за месяц 1 791 заказ, а на уровне Маркета внутри VK оплачено 1,2% заказов. Определение полей стоит подтвердить на Q&amp;A.</p>
+    <p>Заказы в VK принимают 87,5% товарных сообществ, а онлайн-оплату или доставку подключили 19,8%. С ними доля продающих 16,1% против 5,2%, разница в 3,1 раза. Это описательная связь: интеграции мог подключить тот, у кого уже идут продажи.</p></div>
+    <div class="two">
+      <figure><img src="../../figures/eda/03_tools_funnel.png" alt="Воронка готовности к торговле" loading="lazy"><figcaption>Воронка инструментов торговли</figcaption></figure>
+      <figure><img src="../../figures/eda/04_sellers_by_stage.png" alt="Доля продающих по стадии готовности" loading="lazy"><figcaption>Доля продающих по стадии готовности</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="text"><span class="idx">02a</span><h3>Кто подключает онлайн-оплату и доставку — и почему остальные нет</h3>
+    <p>Подключают крупные продавцы: при каталоге 100+ товаров — 53%, при 1–5 товарах — 9%. Цена товара роли не играет (21–24% во всех квинтилях). Онлайн-оплата — самое слабое звено: 5,5% против ~20% у доставки. Те, кто уже продаёт без интеграций, продают не меньше (в среднем 12 заказов в месяц, как и с интеграциями): для них ручная договорённость работает.</p>
+    <p>Прямой причины в данных нет. Три объяснения для проверки интервью и прохождением настройки: продавцу при малом числе заказов это не нужно; подключение сложное или требует условий (статус, договоры, габариты, касса); продавец не видит выгоды, потому что инструменты не связаны в один путь. Скорее всего, работают все три в разной мере.</p></div>
+    <figure><img src="../../figures/eda/05_who_connects_payment_delivery.png" alt="Доля с онлайн-оплатой или доставкой по размеру каталога, аудитории и цене" loading="lazy"><figcaption>Раздел 2.2 ноутбука</figcaption></figure>
+  </div>
+
+  <div class="finding">
+    <div class="text"><span class="idx">03</span><h3>Продажи держатся на десяти сообществах</h3>
+    <p>У 298 продающих сообществ топ-10 дают 54% заказов и 42% GMV. Медианный продавец получает 2 заказа в месяц, 128 сообществ — ровно один. Цель «больше продающих бизнесов» требует работы с длинным хвостом, а средние по выборке надо читать с этой поправкой.</p></div>
+    <figure><img src="../../figures/eda/06_sales_concentration.png" alt="Кривая концентрации заказов" loading="lazy"><figcaption>Концентрация заказов и GMV</figcaption></figure>
+  </div>
+
+  <div class="finding">
+    <div class="text"><span class="idx">04</span><h3>Заказы приходят к тем, у кого есть аудитория и трафик на карточку</h3>
+    <p>Среди готовых к продаже (активный каталог и приём заказов в VK) доля с заказом растёт с 3% при аудитории до 500 подписчиков до 44% при 20 тыс.+. У публикующих 11+ товарных постов и клипов — 46% против 7%. Товарный контент при этом публикуют лишь 6% готовых сообществ.</p></div>
+    <figure><img src="img/drivers.png" alt="Доля с заказом по подписчикам, товарным публикациям и открытиям карточки" loading="lazy"><figcaption>Раздел 3 ноутбука. Пунктир — средняя по базе, 7,6%</figcaption></figure>
+  </div>
+
+  <div class="finding">
+    <div class="text"><span class="idx">05</span><h3>Тезис «товарный контент распространяется хуже» подтверждается частично</h3>
+    <p>У 299 сообществ с обоими видами публикаций товарные посты набирают не меньше просмотров (медианное отношение 1,9), но лайкают их почти вдвое реже: 0,83% против 1,42%. До карточки доходят около 3 из 1 000 просмотров. Узкое место в превращении просмотра в действие, а не в охвате.</p></div>
+    <figure><img src="../../figures/eda/08_product_content.png" alt="Охват и вовлечённость товарного контента" loading="lazy"><figcaption>Раздел 3.1 ноутбука</figcaption></figure>
+  </div>
+
+  <div class="finding">
+    <div class="text"><span class="idx">06</span><h3>61% товарных сообществ принимают заказы, но без онлайн-оплаты, доставки и спроса</h3>
+    <p>Сегментация по главному барьеру: 2 526 сообществ принимают заказы в VK, но не подключили ни онлайн-оплату, ни доставку, не получили ни одного открытия карточки из контента, и у них ноль заказов. Ещё 600 подключили интеграции, но без трафика. Это самый большой резерв роста числа продающих бизнесов. Продажи растут по обеим осям сразу: с онлайн-оплатой или доставкой и 11+ открытиями карточки заказ есть у 53%.</p></div>
+    <div class="two">
+      <figure><img src="../../figures/eda/12_segments.png" alt="Сегменты товарных сообществ" loading="lazy"><figcaption>Взаимоисключающие сегменты по барьеру</figcaption></figure>
+      <figure><img src="../../figures/eda/13_readiness_vs_demand.png" alt="Карта готовность × спрос" loading="lazy"><figcaption>Готовность × спрос и готовность × аудитория</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="text"><span class="idx">07</span><h3>Маркет теряет покупателя на кнопке и оплате</h3>
+    <p>Карточку у Маркета открывают чаще, чем у Партнёра (4,05% против 1,52% показов), но от открытия до заказа доходят 0,21% против 5,67%, в 27 раз реже. Из 413 740 заказов Маркета внутри VK оплачено 4 903, то есть 1,2%. Сделка фактически уходит в переписку или офлайн, а цель кейса — заказы внутри VK.</p></div>
+    <figure><img src="../../figures/eda/14_market_vs_partner_funnel.png" alt="Воронка Маркета и Партнёра" loading="lazy"><figcaption>Лист «Маркет Вконтакте — итоги». У Партнёра есть ещё 106,9 млн прямых переходов без карточки</figcaption></figure>
+  </div>
+
+  <div class="finding">
+    <div class="text"><span class="idx">08</span><h3>Главная Маркета почти не приводит трафик</h3>
+    <p>Главная страница Маркета даёт 0,2% открытий карточки. Витрины сообществ дают 39%, лента и клипы около 19%, «Другое» 40% (не расшифровано). У Партнёра 95% открытий идут из реферальных постов и клипов авторов. Вывод для роли Маркета: это инфраструктура карточки и оформления заказа для витрин сообществ и контента, а не самостоятельная витрина.</p></div>
+    <figure><img src="../../figures/eda/15_traffic_sources.png" alt="Источники открытий карточки" loading="lazy"><figcaption>Лист «Маркет Вконтакте — источники»</figcaption></figure>
+  </div>
+
+  <div class="finding">
+    <div class="text"><span class="idx">09</span><h3>Кто покупает и что продаётся</h3>
+    <p>«Продукты питания» и «Хобби» — 70% заказов Маркета по категорийному срезу. Конверсия Партнёра выше примерно в 26 раз по медиане категорий. Покупатель Маркета моложе: 25–34 лет — 28% против 17% у Партнёра, а у Партнёра больше покупателей 45+. Около трёх четвертей покупателей обеих площадок — женщины.</p></div>
+    <div class="two">
+      <figure><img src="../../figures/eda/17_categories.png" alt="Заказы и конверсия по категориям" loading="lazy"><figcaption>Лист «Маркет Вконтакте — категории»</figcaption></figure>
+      <figure><img src="../../figures/eda/18_buyers_age_gender.png" alt="Покупатели по полу и возрасту" loading="lazy"><figcaption>Лист «Покупатели»</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">4 · Сверки</span>
+    <h2>Где листы расходятся между собой</h2>
+  </div>
+  <p class="read">Бриф предупреждает, что часть данных искажена. Ноутбук автоматически сверяет срезы. Расхождения ниже стоит вынести в вопросы на Q&amp;A и в оговорки на слайдах.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Проверка</th><th>Результат</th><th>Что делать</th></tr></thead>
+      <tbody>
+        <tr><td>Суммы по дням = месячные итоги</td><td class="ok">сходится</td><td>Динамике можно доверять</td></tr>
+        <tr><td>Заказы Маркета по категориям = итог</td><td class="bad"><span class="num">+21 545</span></td><td>Категории для структуры, не для абсолютов</td></tr>
+        <tr><td>Заказы Партнёра по категориям = итог</td><td class="bad"><span class="num">−370 008</span></td><td>То же; вероятно, прямые переходы без карточки</td></tr>
+        <tr><td>Реферальные открытия Партнёра ≤ лента + клипы</td><td class="bad"><span class="num">82,3 млн &gt; 80,5 млн</span></td><td>Запросить определение вложенной строки</td></tr>
+        <tr><td>Демография и регионы = контрольные строки итогов</td><td class="ok">сходится</td><td>Группы меньше 100 исключены организаторами</td></tr>
+        <tr><td>Заказы при выключенном приёме заказов (чекауте)</td><td class="bad"><span class="num">14 строк</span></td><td>Признаки на дату выгрузки; проверять выводы с ними и без</td></tr>
+        <tr><td>Товарных постов больше всех постов</td><td class="bad"><span class="num">11 строк</span></td><td>Уточнить знаменатель доли товарных постов</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">5 · Что из этого следует</span>
+    <h2>Направление для стратегии</h2>
+  </div>
+  <div class="next read">
+    <p><b>Целевой сегмент для пилота:</b> товарные сообщества, которые принимают заказы в VK, но без онлайн-оплаты и доставки и без трафика на карточку. Их около 2,5 тыс. в выборке, у них ноль заказов, а барьер измерим.</p>
+    <p><b>Механика:</b> сделать онлайн-оплату и доставку простыми для малого продавца и показать их выгоду, затем дать первый трафик через товарный контент и авторов. Данные показывают, что обе оси нужны одновременно.</p>
+    <p><b>Роль Маркета:</b> не отдельная витрина, а общая инфраструктура карточки, оформления заказа и онлайн-оплаты для витрин сообществ, ленты и клипов. Ключевая метрика — доля заказов, оплаченных внутри VK (сейчас 1,2%).</p>
+    <p><b>Ограничения:</b> данные синтетические, за один месяц, связи описательные. Причинный эффект проверяется пилотом с контрольной группой.</p>
+  </div>
+</section>
+
+<footer>Источник всех цифр: <code>sources/dataset.xlsx</code> и <code>sources/case-brief.pdf</code> из репозитория команды. Расчёты и графики — <code>notebooks/01_dataset_eda.ipynb</code>.</footer>
+
+</div>
