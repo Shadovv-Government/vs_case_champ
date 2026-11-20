@@ -10,3 +10,5 @@ python ../scripts/run_notebook.py 02_social_commerce_benchmarks.ipynb
 ```
 
 Для ноутбуков нужны Python, pandas, openpyxl, matplotlib, numpy, nbformat, nbclient, ipykernel и jinja2. `transcribe.py` использует faster-whisper и принимает локальную запись и папку вывода. Запись и сырая расшифровка относятся к `.local/`. [Сборка слайдов](../deck/README.md)
+
+`python technical/scripts/strategy_model.py` пересчитывает [модель комплекта из `main`](../archive/main-deck/README.md) по XLSX и параметрам из `technical/archive/presentation-data/`.

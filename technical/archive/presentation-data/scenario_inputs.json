@@ -1,0 +1,31 @@
+{
+  "reference_goods_communities": 100000,
+  "reference_invited_communities": 1000,
+  "ramp": [0, 0, 0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, 1, 1],
+  "pilot": {
+    "research_rub": 75000,
+    "prototype_rub": 150000,
+    "instrumentation_and_qa_rub": 75000,
+    "alpha": 0.05,
+    "power": 0.80,
+    "planning_reserve": 0.10,
+    "minimum_orders_per_invited": 0.075,
+    "variance_scenarios": [0.25, 0.50, 1.00]
+  },
+  "economics": {
+    "aov_rub": 2000,
+    "seller_gross_margin": 0.35,
+    "seller_fulfillment_rub": 100,
+    "service_fee": 0.03,
+    "acquiring": 0.01,
+    "variable_cost_per_paid_order_rub": 10,
+    "development_rub": 2400000,
+    "monthly_fixed_rub": 150000,
+    "steady_payback_months": 12
+  },
+  "scenarios": {
+    "low": {"reach": 0.30, "adoption": 0.15, "orders_per_adopter": 0.10, "seller_rate_lift": 0.05, "fulfillment_share": 0.60, "incremental_sales_share": 0.40, "paid_share": 0.05},
+    "base": {"reach": 0.50, "adoption": 0.30, "orders_per_adopter": 0.25, "seller_rate_lift": 0.10, "fulfillment_share": 0.75, "incremental_sales_share": 0.60, "paid_share": 0.15},
+    "high": {"reach": 0.70, "adoption": 0.45, "orders_per_adopter": 0.50, "seller_rate_lift": 0.20, "fulfillment_share": 0.85, "incremental_sales_share": 0.75, "paid_share": 0.30}
+  }
+}
