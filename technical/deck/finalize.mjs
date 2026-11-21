@@ -1,6 +1,7 @@
+import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { FONT, DISPLAY } from './slides.mjs';
+import { FONT } from './slides.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 const runtime=process.env.ARTIFACT_RUNTIME;
@@ -10,19 +11,26 @@ const check=path.join(skill,'container_tools');
 process.env.RUNTIME_NODE_MODULES=path.join(runtime,'node/node_modules');
 const {finalizePresentation}=await import(pathToFileURL(path.join(check,'artifact_tool_utils.mjs')).href);
 const staging=path.join(root,'.local/redesign/output');
+const validated=await fs.mkdtemp(path.join(staging,'validated-'));
+const name='Теневое Правительство_strategy_msk.pptx';
+const validatedPath=path.join(validated,name);
+const destination=path.join(root,'presentation',name);
+const python=process.env.CASE_PYTHON || path.join(runtime,
+  process.platform==='win32'?'python/python.exe':'python/bin/python3');
 const report=await finalizePresentation({
-  workspaceDir:root,
+  workspaceDir:staging,
   candidatePath:path.join(staging,'candidate.pptx'),
-  finalPath:path.join(root,'presentation/Теневое Правительство_strategy_msk.pptx'),
-  pythonExecutable:path.join(runtime,'python/python.exe'),
+  finalPath:validatedPath,
+  pythonExecutable:python,
   integrityValidatorPath:path.join(check,'inspect_presentation_package_integrity.py'),
   layoutValidatorPath:path.join(check,'inspect_presentation_layout_geometry.py'),
   layoutArgs:['--expected-slide-size-emu','12192000,6858000','--validate-heading-fit'],
   explicitTotalSlideCount:8,
   requiredNativeChartOwnerSlides:[3,4,7,8],
   materializeLiteralChartWorkbooks:true,
-  fontPolicy:{basis:'user_request',families:[FONT,DISPLAY]},
+  fontPolicy:{basis:'design',families:[FONT]},
   verifyArtifactToolImport:true,
   receiptPath:path.join(staging,`validation-${Date.now()}.json`),
 });
-console.log(JSON.stringify({file:report.finalPath,charts:report.nativeChartValidation,bytes:report.byteCount}));
+await fs.rename(validatedPath,destination);
+console.log(JSON.stringify({file:destination,charts:report.nativeChartValidation,bytes:report.byteCount}));

@@ -1,20 +1,26 @@
 export const SIZE = {width:1280,height:720};
-export const FONT = 'Gilroy Light';
-export const DISPLAY = 'Gilroy ExtraBold';
+export const FONT = 'Golos Text';
+export const DISPLAY = FONT;
 export const C={ink:'#F7F9FF',dim:'#BBC9E4',blue:'#518CFF',ice:'#7BE9FF',violet:'#AB95FF',bg:'#080E25',panel:'#101C38',field:'#1D2D4E',stroke:'#354768',mint:'#53E5A5',rose:'#FF9DAD'};
 export const frame=(left,top,width,height)=>({left,top,width,height});
 export const silent={style:'solid',fill:'none',width:0};
 export const int=x=>new Intl.NumberFormat('ru-RU').format(x);
 export const pct=x=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:1}).format(x)+'%';
+export const millions=x=>new Intl.NumberFormat('ru-RU',{minimumFractionDigits:1,maximumFractionDigits:1})
+  .format(x/1e6).replace('-','−')+' млн ₽';
 export function box(s,x,y,w,h,fill,round=0,stroke='none',geometry) {
   return s.shapes.add({geometry:geometry??(round?'roundRect':'rect'),position:frame(x,y,w,h),fill,
     line:stroke==='none'?silent:{fill:stroke,width:1.2,style:'solid'},...(round?{borderRadius:round}:{})});
 }
 export function txt(s,text,x,y,w,h,size=25,color=C.ink,bold=false,align='left') {
   const el=box(s,x,y,w,h,'none',0,'none','textbox');
-  el.name=String(text).split('\n')[0];el.text=String(text);
-  el.text.style={fontSize:size,color,alignment:align,verticalAlignment:'middle'};
-  el.text.typeface=bold?DISPLAY:FONT;
+  const copy=String(text)
+    .replace(/(?<!\p{L})([авикосуя]) (?=\S)/giu,'$1\u00a0')
+    .replace(/(\d) (?=(?:\d{3}(?!\d)|тыс\.|млн(?!\p{L})|₽|п\. п\.))/gu,'$1\u00a0')
+    .replace(/п\. п\./g,'п.\u00a0п.');
+  el.name=copy.split('\n')[0];el.text=copy;
+  el.text.style={fontSize:size,color,bold,alignment:align,verticalAlignment:'middle'};
+  el.text.typeface=FONT;
   return el;
 }
 export function pic(s,assets,name,x,y,w,h,alt,round=0){
@@ -65,24 +71,32 @@ export function icon(s,a,id,x,y,d,color=C.ice){
 const chartText={fontSize:20,fill:C.dim,typeface:FONT};
 const common={chartFill:'none',plotAreaFill:'none',chartLine:silent,plotAreaLine:silent,hasLegend:false};
 export function ring(s,x,y,d,name,labels,values,colors,hole=76){
-  return s.charts.add('doughnut',{...common,position:frame(x,y,d,d),categories:labels,
+  const chart=s.charts.add('doughnut',{...common,position:frame(x,y,d,d),categories:labels,
     series:[{name,values,points:values.map((_,idx)=>({idx,fill:colors[idx],line:silent}))}],
     doughnutOptions:{holeSize:hole,firstSliceAngle:270}});
+  // LibreOffice uses a smaller default hole. Reserve the centre for the label in both renderers.
+  const center=d*.9*hole/100;
+  dot(s,x+(d-center)/2,y+(d-center)/2,center,C.panel);
+  return chart;
 }
 export function profitLine(s,x,y,w,h,categories,values){
+  const min=Math.min(-6,2*Math.floor(Math.min(...values)/2));
+  const max=Math.max(2,2*Math.ceil(Math.max(...values)/2));
+  const majorUnit=2*Math.max(1,Math.ceil((max-min)/8));
   return s.charts.add('line',{...common,position:frame(x,y,w,h),categories,
     series:[{name:'Безубыточность',values:values.map(()=>0),line:{style:'dashed',fill:'#A4B4DD',width:1.4}},
       {name:'Результат за первый год, млн ₽',values,line:{style:'solid',fill:C.ice,width:4},marker:{symbol:'circle',size:8,fill:C.ice}}],
     lineOptions:{smooth:false},
     xAxis:{visible:true,tickLabelPosition:'low',textStyle:chartText,line:silent},
-    yAxis:{visible:true,min:-6,max:2,majorUnit:2,numberFormatCode:'0',textStyle:chartText,line:silent,majorGridlines:{style:'solid',fill:'#395074',width:1}}});
+    yAxis:{visible:true,min,max,majorUnit,numberFormatCode:'0;−0;0',textStyle:chartText,line:silent,majorGridlines:{style:'solid',fill:'#395074',width:1}}});
 }
 export function scenarioChart(s,x,y,w,h,e){
+  const max=Math.ceil(Math.max(...e.scenarios.flatMap(v=>[v.order_lift,v.seller_lift]))*1.176);
   return s.charts.add('bar',{...common,position:frame(x,y,w,h),categories:e.scenarios.map(v=>v.label),
-    series:[{name:'Доп. заказы',values:e.scenarios.map(v=>v.order_lift),fill:C.blue},
-      {name:'Доп. сообщества с заказом',values:e.scenarios.map(v=>v.seller_lift),fill:C.ice}],
+    series:[{name:'Прирост заказов',values:e.scenarios.map(v=>v.order_lift),fill:C.blue},
+      {name:'Прирост сообществ с заказом',values:e.scenarios.map(v=>v.seller_lift),fill:C.ice}],
     barOptions:{direction:'column',grouping:'clustered',gapWidth:66,overlap:-14},
     xAxis:{visible:true,tickLabelPosition:'low',textStyle:chartText,line:silent},
-    yAxis:{visible:false,min:0,max:294,line:silent,majorGridlines:null},
+    yAxis:{visible:false,min:0,max,line:silent,majorGridlines:null},
     dataLabels:{showValue:true,position:'outEnd',numberFormatCode:'+0',textStyle:{fontSize:23,typeface:DISPLAY,fill:C.ink}}});
 }

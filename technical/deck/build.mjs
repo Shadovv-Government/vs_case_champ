@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
-import { buildSlides, SIZE, FONT, DISPLAY, ASSETS } from './slides.mjs';
+import { buildSlides, SIZE, FONT, ASSETS } from './slides.mjs';
 
 const here=path.dirname(fileURLToPath(import.meta.url));
 const root=path.resolve(here,'../..');
@@ -13,11 +13,7 @@ const modules=path.join(runtime,'node/node_modules');
 const {Presentation,PresentationFile}=await import(pathToFileURL(path.join(modules,'@oai/artifact-tool/dist/artifact_tool.mjs')).href);
 const {FontLibrary}=createRequire(path.join(modules,'@oai/artifact-tool/package.json'))('skia-canvas');
 const dir=path.join(here,'assets');
-for(const [family,file] of [[FONT,'Gilroy-Light.otf'],[DISPLAY,'Gilroy-ExtraBold.otf']]){
-  const filePath=path.join(root,'.local/redesign/gilroy',file);
-  await fs.access(filePath);
-  FontLibrary.use(family,[filePath]);
-}
+FontLibrary.use(FONT, ['GolosText-Regular.ttf', 'GolosText-Bold.ttf'].map(file => path.join(dir, file)));
 const assets=Object.fromEntries(await Promise.all(ASSETS.map(async name=>[name,new Uint8Array(await fs.readFile(path.join(dir,name)))])));
 const evidence=JSON.parse(await fs.readFile(path.join(here,'evidence.json'),'utf8'));
 const p=Presentation.create({slideSize:SIZE});

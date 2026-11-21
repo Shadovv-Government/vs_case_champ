@@ -13,12 +13,22 @@
       235,
       73
     ],
+    "groups_without_orders": [
+      202,
+      312,
+      3126,
+      194,
+      39
+    ],
     "quiet": 3126,
     "quiet_with_normal_views": 3100,
     "quiet_with_product_posts": 47,
+    "quiet_with_normal_views_without_product_posts": 3054,
     "warm": 233,
     "warm_under_10": 194,
     "warm_at_least_10": 39,
+    "warm_high_opening_share": 0.88297187030277,
+    "without_checkout_active_openings": 55,
     "no_content_openings_with_orders": 203
   },
   "market_pct": [
@@ -27,6 +37,20 @@
     0.2,
     42.1
   ],
+  "market_totals": {
+    "opens": 193512461,
+    "search_pct": 1.9,
+    "other_pct": 40.2,
+    "orders": 413740,
+    "category_orders": 435285,
+    "paid_in_vk": 4903,
+    "partner_orders": 4927525,
+    "partner_direct_clicks": 106914679
+  },
+  "control": {
+    "share_with_orders": 0.15,
+    "orders_per_selling_community": 2
+  },
   "scenarios": [
     {
       "label": "Осторожный",
@@ -50,12 +74,141 @@
       "order_lift": 250
     }
   ],
+  "post_scenarios": [
+    {
+      "label": "Осторожный",
+      "publisher_rate_lift": 0.05,
+      "orders_per_additional_publisher": 0.2,
+      "publisher_lift": 50,
+      "order_lift": 10
+    },
+    {
+      "label": "Средний",
+      "publisher_rate_lift": 0.1,
+      "orders_per_additional_publisher": 0.4,
+      "publisher_lift": 100,
+      "order_lift": 40
+    },
+    {
+      "label": "Сильный",
+      "publisher_rate_lift": 0.15,
+      "orders_per_additional_publisher": 0.6,
+      "publisher_lift": 150,
+      "order_lift": 90
+    }
+  ],
+  "connection": {
+    "reference_communities": 100,
+    "checkout_rate_lift": 0.1,
+    "order_share_among_incremental_connections": 0.2,
+    "additional_connected": 10,
+    "additional_with_order": 2
+  },
   "model": {
-    "year_cost": 4200000,
+    "development_rub": 2400000,
+    "monthly_support_rub": 150000,
     "active_months": 10,
-    "net_per_order": 10.0,
+    "aov_rub": 2000,
+    "seller_gross_margin": 0.35,
+    "seller_handling_rub": 100,
+    "fee_rate": 0.03,
+    "acquiring_rate": 0.01,
+    "paid_order_cost_rub": 10,
+    "fulfillment": 0.8,
+    "paid_service_share": 0.5,
+    "booked_order_cost_rub": 2,
     "example_monthly_orders": 25000,
+    "net_per_paid_order": 30.0,
+    "seller_contribution": 600.0,
+    "seller_contribution_with_service": 540.0,
+    "year_cost": 4200000,
+    "example_year_gross_fee": 6000000,
+    "sensitivity": [
+      {
+        "paid_service_share": 0.1,
+        "net_per_order": 0.4,
+        "breakeven_monthly_orders": 1050000,
+        "example_year_result": -4100000.0
+      },
+      {
+        "paid_service_share": 0.25,
+        "net_per_order": 4.0,
+        "breakeven_monthly_orders": 105000,
+        "example_year_result": -3200000.0
+      },
+      {
+        "paid_service_share": 0.5,
+        "net_per_order": 10.0,
+        "breakeven_monthly_orders": 42000,
+        "example_year_result": -1700000.0
+      },
+      {
+        "paid_service_share": 0.75,
+        "net_per_order": 16.0,
+        "breakeven_monthly_orders": 26250,
+        "example_year_result": -200000.0
+      }
+    ],
+    "net_per_order": 10.0,
     "breakeven_monthly_orders": 42000,
-    "example_year_result": -1700000
+    "example_year_result": -1700000.0,
+    "monthly_eligible_reach": [
+      {
+        "label": "Средний",
+        "communities": 259260
+      },
+      {
+        "label": "Сильный",
+        "communities": 168000
+      }
+    ]
+  },
+  "pilot": {
+    "budget_rub": {
+      "research": 75000,
+      "prototype": 150000,
+      "events_and_qa": 75000
+    },
+    "observation_days": 28,
+    "followup_days": 28,
+    "orders_per_1000_gate": 100,
+    "post_orders_per_1000_gate": 40,
+    "cancel_margin_pp": 2,
+    "complaint_margin_pp": 0.5,
+    "alpha": 0.05,
+    "power": 0.8,
+    "reserve": 0.1,
+    "budget_total_rub": 300000,
+    "sample_size": [
+      {
+        "variance": 0.5,
+        "per_arm_with_reserve": 873,
+        "post_per_arm_with_reserve": 5451
+      },
+      {
+        "variance": 1.0,
+        "per_arm_with_reserve": 1745,
+        "post_per_arm_with_reserve": 10902
+      },
+      {
+        "variance": 2.0,
+        "per_arm_with_reserve": 3489,
+        "post_per_arm_with_reserve": 21803
+      }
+    ],
+    "quality_sample": [
+      {
+        "metric": "Отмены",
+        "event_rate": 0.1,
+        "margin_pp": 2,
+        "orders_per_arm_with_reserve": 3092
+      },
+      {
+        "metric": "Жалобы",
+        "event_rate": 0.01,
+        "margin_pp": 0.5,
+        "orders_per_arm_with_reserve": 5441
+      }
+    ]
   }
 }
