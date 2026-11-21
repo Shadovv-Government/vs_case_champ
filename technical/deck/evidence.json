@@ -1,0 +1,61 @@
+{
+  "source": "sources/dataset.xlsx",
+  "observed": {
+    "goods": 4158,
+    "checkout": 3826,
+    "sellers_with_orders": 285,
+    "all_orders": 3458,
+    "top_10_orders": 1878,
+    "groups": [
+      202,
+      319,
+      3329,
+      235,
+      73
+    ],
+    "quiet": 3126,
+    "quiet_with_normal_views": 3100,
+    "quiet_with_product_posts": 47,
+    "warm": 233,
+    "warm_under_10": 194,
+    "warm_at_least_10": 39,
+    "no_content_openings_with_orders": 203
+  },
+  "market_pct": [
+    39.1,
+    18.6,
+    0.2,
+    42.1
+  ],
+  "scenarios": [
+    {
+      "label": "Осторожный",
+      "p": 0.18,
+      "m": 2,
+      "seller_lift": 30,
+      "order_lift": 60
+    },
+    {
+      "label": "Средний",
+      "p": 0.22,
+      "m": 2.1,
+      "seller_lift": 70,
+      "order_lift": 162
+    },
+    {
+      "label": "Сильный",
+      "p": 0.25,
+      "m": 2.2,
+      "seller_lift": 100,
+      "order_lift": 250
+    }
+  ],
+  "model": {
+    "year_cost": 4200000,
+    "active_months": 10,
+    "net_per_order": 10.0,
+    "example_monthly_orders": 25000,
+    "breakeven_monthly_orders": 42000,
+    "example_year_result": -1700000
+  }
+}
